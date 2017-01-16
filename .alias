@@ -1,0 +1,60 @@
+alias citadel='export CVSROOT=:pserver:crosmw@citadel.rtp.dg.com:/usr/local/cvs/archive &&
+          export TOOLS_DIRECTORY=x:/ &&
+          setprompt'
+alias knox='export CVSROOT=:pserver:crosmw@fortknox.rtp.dg.com:/usr/local/cvs/archive &&
+          export TOOLS_DIRECTORY=x:/ &&
+          setprompt'
+alias campbell='export CVSROOT=:pserver:crosmw@fortcampbell.rtp.dg.com:/usr/local/cvs/archive &&
+          export TOOLS_DIRECTORY=x:/ &&
+          setprompt'
+alias cscope=mlcscope
+alias cvs='cvs -d $CVSROOT'
+alias db='call nsgb04.lss.emc.com'
+alias db6='call nsgb06'
+alias dirs='ls -l | egrep "^d"'
+alias fixexodus='cd  /cygdrive/c/Documents\ and\ Settings/crosmw/Application\ Data/Exodus'
+
+#alias ls='/usr/bin/ls --color -Fx'
+alias ls='/usr/bin/ls --color=auto -Fx'
+alias more='less'
+alias mutt='/usr/local/bin/mutt'
+alias outlook='screen -U -c "$HOME/.mutt/screen.mutt"'
+alias sea='echo $PATH'
+alias tkcvs='tkcvs.tcl'
+
+function setprompt () {
+    PS1="\n\h\n${CVSROOT}\n\w\n\!) "
+    }
+
+function setWindowTitle() {
+   echo -ne "\e]2;$*\a"
+    }
+
+function call() {
+    setWindowTitle $*;
+    ssh -Y -C $*
+    setWindowTitle "LocalHost"
+    }
+
+function fcd () {
+    cd `dirname $1`
+    }
+
+function fixhttpd () {
+    for i in `ps | grep httpd | awk '{print $1;}'`
+    do
+	/bin/kill -f -9 $i;
+	echo $i;
+    done
+    }
+
+function remind () {
+    /usr/local/bin/remind $@ ~/.reminders
+    }
+
+function crontab() {
+    __EDITOR=$EDITOR
+    export EDITOR=vi
+    /usr/bin/crontab $@
+    export EDITOR=$__EDITOR
+    }

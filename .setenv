@@ -1,0 +1,14 @@
+export TOOLS_DIRECTORY=X:/
+export CVSROOT=:pserver:crosmw@fortknox.rtp.lab.emc.com:/usr/local/cvs/archive
+export DISPLAY=:0.0
+export EDITOR=/usr/bin/vim
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+export PATH=$PATH:/BirtTools/tools/bin:/usr/sbin:/usr/X11R6/bin:/cygdrive/x/bin
+export SHELL=/bin/bash
+export TERM=xterm
+unset VIMRUNTIME
+export TERM=xterm
+CygDir=`cygpath -w -a / | sed 's/^.*\(cyg[^\\]*\).*/\1/i'`
+PATH=$(echo $PATH | sed "s#/cygwin/#/$CygDir/#ig")
+
